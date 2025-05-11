@@ -146,3 +146,5 @@ C:\Users\Vinicius\Documents\GitHub\Neobank-backend-ASP.NET\Neobank\Neobank\obj\D
 C:\Users\Vinicius\Documents\GitHub\Neobank-backend-ASP.NET\Neobank\Neobank\obj\Debug\net8.0\Neobank.pdb
 C:\Users\Vinicius\Documents\GitHub\Neobank-backend-ASP.NET\Neobank\Neobank\obj\Debug\net8.0\Neobank.genruntimeconfig.cache
 C:\Users\Vinicius\Documents\GitHub\Neobank-backend-ASP.NET\Neobank\Neobank\obj\Debug\net8.0\ref\Neobank.dll
+C:\Users\Vinicius\Documents\GitHub\Neobank-backend-ASP.NET\Neobank\Neobank\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Vinicius\Documents\GitHub\Neobank-backend-ASP.NET\Neobank\Neobank\obj\Debug\net8.0\Neobank.sourcelink.json
