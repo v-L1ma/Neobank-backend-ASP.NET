@@ -1,6 +1,6 @@
 namespace Neobank.Models;
 
-public class Register
+public class RegisterDto
 {
     public string Name { get; set; } = string.Empty;
     public string Birthday { get; set; } = string.Empty;
