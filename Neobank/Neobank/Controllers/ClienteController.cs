@@ -22,10 +22,16 @@ public class ClienteController : ControllerBase
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] Register model)
+        public async Task<IActionResult> Register([FromBody] RegisterDto dto)
         {
-                var user = new Cliente { Name = model.Name, UserName = model.Email, Email = model.Email, Birthday = model.Birthday};
-                var result = await _userManager.CreateAsync(user, model.Password);
+                var user = new Cliente { 
+                        Name = dto.Name, 
+                        UserName = dto.Email, 
+                        Email = dto.Email, 
+                        Birthday = dto.Birthday,
+                        Balance = 0
+                };
+                var result = await _userManager.CreateAsync(user, dto.Password);
 
                 if (result.Succeeded)
                 {
@@ -35,11 +41,11 @@ public class ClienteController : ControllerBase
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] Login model)
+        public async Task<IActionResult> Login([FromBody] LoginDto dto)
         {
-                var user = await _userManager.FindByNameAsync(model.email);
+                var user = await _userManager.FindByNameAsync(dto.email);
 
-                if (user==null || !await _userManager.CheckPasswordAsync(user, model.password))
+                if (user==null || !await _userManager.CheckPasswordAsync(user, dto.password))
                 { 
                        return Unauthorized();
                 }

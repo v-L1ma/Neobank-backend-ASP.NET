@@ -10,44 +10,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e0e1a05f-ce5c-45ad-a7a5-1965803e757c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Neobank/Controllers/ClienteController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Neobank/Controllers/TesteController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Neobank/Models/Login.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Neobank/Models/Register.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Neobank/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Neobank/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Neobank/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Neobank/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/Controllers/WeatherForecastController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/Data/AppDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/Data/AppDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Neobank/Controllers/ClienteController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/Controllers/ClienteController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Neobank/Controllers/TransacaoController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/Controllers/TransacaoController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Neobank/Models/Cliente.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/Models/Cliente.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Neobank/Neobank.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/Neobank.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/Neobank.http" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/WeatherForecast.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/bin/Debug/net8.0/Microsoft.IdentityModel.Abstractions.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/bin/Debug/net8.0/Microsoft.IdentityModel.Abstractions.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/bin/Debug/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/bin/Debug/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/bin/Debug/net8.0/Microsoft.IdentityModel.Logging.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/bin/Debug/net8.0/Microsoft.IdentityModel.Logging.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/bin/Debug/net8.0/Neobank.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/bin/Debug/net8.0/Neobank.deps.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Neobank/bin/Debug/net8.0/Neobank.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/bin/Debug/net8.0/Neobank.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Neobank/bin/Debug/net8.0/Neobank.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/bin/Debug/net8.0/Neobank.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Neobank/bin/Debug/net8.0/Neobank.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/bin/Debug/net8.0/Neobank.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/bin/Debug/net8.0/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/bin/Debug/net8.0/appsettings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.assets.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.csproj.AssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.genruntimeconfig.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/apphost.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/ref/Neobank.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/ref/Neobank.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/refint/Neobank.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/refint/Neobank.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/staticwebassets.build.json" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/staticwebassets.build.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/staticwebassets/msbuild.build.Neobank.props" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/staticwebassets/msbuild.build.Neobank.props" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Neobank/obj/Neobank.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/Neobank.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Neobank/obj/Neobank.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/Neobank.csproj.nuget.g.props" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Neobank/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Neobank/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/project.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Neobank/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/project.packagespec.json" afterDir="false" />
@@ -77,22 +65,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.Neobank: http.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "editor.preferences.completion",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.Neobank: http.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.completion&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.Neobank: http">
     <configuration name="Neobank: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Neobank/Neobank.csproj" />

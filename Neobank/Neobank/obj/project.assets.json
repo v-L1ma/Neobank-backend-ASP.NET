@@ -4328,7 +4328,7 @@
   "projectFileDependencyGroups": {
     "net8.0": [
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 8.0.15",
-      "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 8.*",
+      "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 8.0.15",
       "Microsoft.EntityFrameworkCore >= 8.0.15",
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.15",
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.15",
@@ -4336,19 +4336,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Vinicius\\.nuget\\packages\\": {}
+    "C:\\Users\\Vanuza Santos\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Vinicius\\Documents\\GitHub\\Neobank-backend-ASP.NET\\Neobank\\Neobank\\Neobank.csproj",
+      "projectUniqueName": "C:\\Users\\Vanuza Santos\\Documents\\curso vinicius\\Neobank-backend-ASP.NET\\Neobank\\Neobank\\Neobank.csproj",
       "projectName": "Neobank",
-      "projectPath": "C:\\Users\\Vinicius\\Documents\\GitHub\\Neobank-backend-ASP.NET\\Neobank\\Neobank\\Neobank.csproj",
-      "packagesPath": "C:\\Users\\Vinicius\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Vinicius\\Documents\\GitHub\\Neobank-backend-ASP.NET\\Neobank\\Neobank\\obj\\",
+      "projectPath": "C:\\Users\\Vanuza Santos\\Documents\\curso vinicius\\Neobank-backend-ASP.NET\\Neobank\\Neobank\\Neobank.csproj",
+      "packagesPath": "C:\\Users\\Vanuza Santos\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Vanuza Santos\\Documents\\curso vinicius\\Neobank-backend-ASP.NET\\Neobank\\Neobank\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Vinicius\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Vanuza Santos\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -4371,7 +4371,8 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net8.0": {
@@ -4383,7 +4384,7 @@
           },
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
             "target": "Package",
-            "version": "[8.*, )"
+            "version": "[8.0.15, )"
           },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
@@ -4415,6 +4416,24 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[8.0.15, 8.0.15]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[8.0.15, 8.0.15]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[8.0.15, 8.0.15]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[8.0.15, 8.0.15]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -4423,7 +4442,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.408/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "vq7d4VqY2fGZDDUgnGKMtEBK12IgkJyYWYmTNxfbsY8=",
+  "Hash": "lwIUHHfsA/Il7SSDPU0FUKqXLQV58d/aJW3+FzhCzsY=",
   "Source": "Neobank",
   "BasePath": "_content/Neobank",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }

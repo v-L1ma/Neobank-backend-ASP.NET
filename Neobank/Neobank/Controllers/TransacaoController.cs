@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Neobank.Data;
+using Neobank.Models;
 
 namespace Neobank.Controllers;
 
@@ -10,23 +11,24 @@ public class TransacaoController(AppDbContext context) : ControllerBase
     private readonly AppDbContext _context = context;
 
     [HttpPost]
-    public IActionResult Trasferir([FromBody] string senderId, string ReceiverId, int value)
+    public IActionResult Trasferir([FromBody] TransacaoDto dto)
     {
-        var sender = _context.Users.Find(ReceiverId);
-        var receiver = _context.Users.Find(ReceiverId);
+        var sender = _context.Users.Find(dto.SenderId);
+        var receiver = _context.Users.Find(dto.ReceiverId);
 
         if (sender == null || receiver == null)
         {
             return NotFound();
         }
 
-        if (senderId == ReceiverId || value<=0 || sender.balance < value)
+        if (dto.SenderId == dto.ReceiverId || dto.Value<=0 || sender.Balance < dto.Value)
         {
             return BadRequest();
         }
 
-        sender.balance -= value;
-        receiver.balance += value;
+        sender.Balance -= dto.Value;
+        receiver.Balance += dto.Value;
+        _context.SaveChanges();
 
         return Ok();
     }
