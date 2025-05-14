@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Vanuza Santos\\Documents\\curso vinicius\\Neobank-backend-ASP.NET\\Neobank\\Neobank\\Neobank.csproj": {}
+    "/home/vinicius/Documentos/GitHub/Neobank-backend-ASP.NET/Neobank/Neobank/Neobank.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Vanuza Santos\\Documents\\curso vinicius\\Neobank-backend-ASP.NET\\Neobank\\Neobank\\Neobank.csproj": {
+    "/home/vinicius/Documentos/GitHub/Neobank-backend-ASP.NET/Neobank/Neobank/Neobank.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Vanuza Santos\\Documents\\curso vinicius\\Neobank-backend-ASP.NET\\Neobank\\Neobank\\Neobank.csproj",
+        "projectUniqueName": "/home/vinicius/Documentos/GitHub/Neobank-backend-ASP.NET/Neobank/Neobank/Neobank.csproj",
         "projectName": "Neobank",
-        "projectPath": "C:\\Users\\Vanuza Santos\\Documents\\curso vinicius\\Neobank-backend-ASP.NET\\Neobank\\Neobank\\Neobank.csproj",
-        "packagesPath": "C:\\Users\\Vanuza Santos\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Vanuza Santos\\Documents\\curso vinicius\\Neobank-backend-ASP.NET\\Neobank\\Neobank\\obj\\",
+        "projectPath": "/home/vinicius/Documentos/GitHub/Neobank-backend-ASP.NET/Neobank/Neobank/Neobank.csproj",
+        "packagesPath": "/home/vinicius/.nuget/packages/",
+        "outputPath": "/home/vinicius/Documentos/GitHub/Neobank-backend-ASP.NET/Neobank/Neobank/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Vanuza Santos\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/home/vinicius/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -88,15 +88,11 @@
               "version": "[8.0.15, 8.0.15]"
             },
             {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "name": "Microsoft.NETCore.App.Host.linux-x64",
               "version": "[8.0.15, 8.0.15]"
             },
             {
               "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.15, 8.0.15]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
               "version": "[8.0.15, 8.0.15]"
             }
           ],
@@ -108,7 +104,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/home/vinicius/.dotnet/sdk/9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
