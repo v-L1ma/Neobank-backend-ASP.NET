@@ -10,37 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e0e1a05f-ce5c-45ad-a7a5-1965803e757c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Neobank/Controllers/DepositController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Neobank/Models/DepositDto.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Neobank/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Neobank/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/Controllers/ClienteController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/Controllers/ClienteController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/Controllers/TransacaoController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/Controllers/TransacaoController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/Models/Cliente.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/Models/Cliente.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/Neobank.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/Neobank.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/bin/Debug/net8.0/Neobank.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/bin/Debug/net8.0/Neobank.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/bin/Debug/net8.0/Neobank.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/bin/Debug/net8.0/Neobank.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/bin/Debug/net8.0/Neobank.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/bin/Debug/net8.0/Neobank.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.genruntimeconfig.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/Neobank.sourcelink.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/apphost.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/ref/Neobank.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/ref/Neobank.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/refint/Neobank.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/refint/Neobank.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/staticwebassets.build.json" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/staticwebassets.build.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/staticwebassets/msbuild.build.Neobank.props" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/Debug/net8.0/staticwebassets/msbuild.build.Neobank.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/obj/Neobank.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/Neobank.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/obj/Neobank.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/Neobank.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/project.packagespec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Neobank/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Neobank/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Neobank/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +28,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "v-L1ma"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/v-L1ma/Neobank-backend-ASP.NET.git",
+    "accountId": "d3b04b0d-5141-4742-b909-fccc2db22120"
+  }
+}]]></component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -61,6 +48,9 @@
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="2wxVw3X4hh7idjVZSHwchWSXeD5" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -77,7 +67,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.completion&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.inline.completion&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -137,6 +127,7 @@
       <updated>1746983447220</updated>
       <workItem from="1746983448505" duration="6012000" />
       <workItem from="1746996110928" duration="7198000" />
+      <workItem from="1747269162042" duration="500000" />
     </task>
     <servers />
   </component>
