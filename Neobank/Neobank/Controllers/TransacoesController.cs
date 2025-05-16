@@ -1,6 +1,8 @@
+using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using Neobank.Data;
 using Neobank.Models;
+using Neobank.Services;
 
 namespace Neobank.Controllers;
 
@@ -78,7 +80,15 @@ public class TransacoesController(AppDbContext context) : ControllerBase
         await _context.SaveChangesAsync();
 
         return Ok("Transferencia concluida com êxito!");
+    }
 
+    [HttpPost("Cobrar")]
+    public IActionResult gerarQrCodeCobranca([FromBody] CobrancaDto dto)
+    {
+        string json = JsonSerializer.Serialize(dto);
+        
+        var image = QrCodeGenerator.GenerateImage(json);
+        return File(image, "image/jpeg");
     }
     
     

@@ -65,7 +65,5 @@ public class ClienteController : ControllerBase
                         )
                 );
                 return Ok(new { Token = new JwtSecurityTokenHandler().WriteToken(token) });
-
-                
         }
 }
