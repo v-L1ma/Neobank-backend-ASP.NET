@@ -1,5 +1,6 @@
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using Neobank.Data;
 using Neobank.Models;
 using Neobank.Services;
@@ -83,12 +84,76 @@ public class TransacoesController(AppDbContext context) : ControllerBase
     }
 
     [HttpPost("Cobrar")]
-    public IActionResult gerarQrCodeCobranca([FromBody] CobrancaDto dto)
+    public async Task<IActionResult> GerarQrCodeCobranca([FromBody] CobrancaDto dto)
     {
-        string json = JsonSerializer.Serialize(dto);
+        var receiver = await _context.Users.FindAsync(dto.ReceiverId);
+
+        if (receiver is null)
+        {
+            return NotFound();
+        }
+
+        if (dto.Value <= 0)
+        {
+            return BadRequest();
+        }
+
+        string? json;
+
+        try
+        {
+            json = JsonSerializer.Serialize(dto);
+        }
+        catch (Exception e)
+        {
+            return StatusCode(500, "Erro ao transformar json em string.");
+        }
+
+        var criptografado = Cryptografia.Cryptografar(json);
+
+        if (criptografado.IsNullOrEmpty())
+        {
+            return StatusCode(500, "Erro ao criptografar.");
+        }
         
-        var image = QrCodeGenerator.GenerateImage(json);
+        var image = QrCodeGenerator.GenerateImage(criptografado);
         return File(image, "image/jpeg");
+    }
+
+    [HttpPost("Pagar")]
+    public async Task<ActionResult> PagarQrCode([FromBody] string criptogafado)
+    {
+        string descriptografado = Cryptografia.Descryptografar(criptogafado);
+
+        if (descriptografado.IsNullOrEmpty())
+        {
+            return StatusCode(500, "Erro ao descriptografar.");
+        }
+
+        CobrancaDto? infos;
+
+        try
+        {
+            infos = JsonSerializer.Deserialize<CobrancaDto>(descriptografado);
+        }
+        catch (Exception e)
+        {
+            return StatusCode(500, "Erro ao transformar em json.");
+        }
+        
+        if (infos == null || infos.Value<=0)
+        {
+            return BadRequest();
+        }
+
+        var receiver = await _context.Users.FindAsync(infos.ReceiverId);
+
+        if (receiver is null)
+        {
+            return NotFound();
+        }
+        
+        return Ok(new { receiver = receiver, value = infos.Value});
     }
     
     
