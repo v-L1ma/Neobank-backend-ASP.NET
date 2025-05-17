@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Neobank.Models;
+using Neobank.Services;
 
 namespace Neobank.Controllers;
 
@@ -45,11 +46,11 @@ public class ClienteController : ControllerBase
         {
                 var user = await _userManager.FindByNameAsync(dto.email);
 
-                if (user==null || !await _userManager.CheckPasswordAsync(user, dto.password))
+                if (user==null || !await new ValidarSenha(_userManager).Validar(user, dto.password))
                 { 
                        return Unauthorized();
                 }
-                
+                 
                 var authClaims = new List<Claim>
                 {
                         new Claim(JwtRegisteredClaimNames.Sub, user.Email!),

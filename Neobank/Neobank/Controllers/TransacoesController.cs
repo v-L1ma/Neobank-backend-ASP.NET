@@ -1,4 +1,5 @@
 using System.Text.Json;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Neobank.Data;
@@ -9,20 +10,26 @@ namespace Neobank.Controllers;
 
 [Route("api/[Controller]")]
 [ApiController]
-public class TransacoesController(AppDbContext context) : ControllerBase
+public class TransacoesController(AppDbContext context, UserManager<Cliente> userManager) : ControllerBase
 {
     private readonly AppDbContext _context = context;
+    private readonly UserManager<Cliente> _userManager = userManager;
 
     [HttpPost("Transferir")]
-    public IActionResult Trasferir([FromBody] TransacaoDto dto)
+    public async Task<IActionResult> Trasferir([FromBody] TransacaoDto dto)
     {
-        var sender = _context.Users.Find(dto.SenderId);
-        var receiver = _context.Users.Find(dto.ReceiverId);
+        var sender = await _context.Users.FindAsync(dto.SenderId);
+        var receiver = await _context.Users.FindAsync(dto.ReceiverId);
 
         if (sender == null || receiver == null)
         {
             return NotFound();
         }
+        
+        if (!await new ValidarSenha(_userManager).Validar(sender, dto.Password) )
+        {
+            return BadRequest("Senha inválida.");
+        } 
 
         if (dto.SenderId == dto.ReceiverId || dto.Value<=0 || sender.Balance < dto.Value)
         {
@@ -71,6 +78,11 @@ public class TransacoesController(AppDbContext context) : ControllerBase
         {
             return NotFound();
         }
+        
+        if (!await new ValidarSenha(_userManager).Validar(cliente, dto.Password) )
+        {
+            return BadRequest("Senha inválida.");
+        } 
 
         if (cliente.Balance < dto.Value)
         {
@@ -121,9 +133,9 @@ public class TransacoesController(AppDbContext context) : ControllerBase
     }
 
     [HttpPost("Pagar")]
-    public async Task<ActionResult> PagarQrCode([FromBody] string criptogafado)
+    public async Task<ActionResult> PagarQrCode([FromBody] PagarDto dto)
     {
-        string descriptografado = Cryptografia.Descryptografar(criptogafado);
+        string descriptografado = Cryptografia.Descryptografar(dto.CodigoBarras);
 
         if (descriptografado.IsNullOrEmpty())
         {
@@ -147,11 +159,17 @@ public class TransacoesController(AppDbContext context) : ControllerBase
         }
 
         var receiver = await _context.Users.FindAsync(infos.ReceiverId);
+        var cliente = await _context.Users.FindAsync(dto.ClientId);
 
-        if (receiver is null)
+        if (receiver is null || cliente is null)
         {
             return NotFound();
         }
+
+        if (!await new ValidarSenha(_userManager).Validar(cliente, dto.Password) )
+        {
+            return BadRequest("Senha inválida.");
+        } 
         
         return Ok(new { receiver = receiver, value = infos.Value});
     }
