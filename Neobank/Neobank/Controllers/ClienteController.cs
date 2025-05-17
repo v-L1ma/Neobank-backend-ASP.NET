@@ -1,70 +1,22 @@
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using Microsoft.AspNetCore.Identity;
+using System.Security.AccessControl;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
-using Neobank.Models;
-using Neobank.Services;
+using Neobank.Data;
 
 namespace Neobank.Controllers;
 
-[Route("api/[controller]")]
+[Route("[controller]")]
 [ApiController]
-public class ClienteController : ControllerBase
-{ 
-        private readonly UserManager<Cliente> _userManager;
-        private readonly IConfiguration _configuration;
+public class ClienteController(AppDbContext context) : ControllerBase
+{
+    private readonly AppDbContext _context = context;
 
-        public ClienteController(UserManager<Cliente> userManager, IConfiguration configuration)
-        {
-                _userManager = userManager;
-                _configuration = configuration;
-        }
+    [HttpGet("{id}")]
+    public async Task<ActionResult> GetClienteInfo([FromRoute] string id)
+    {
+        var clienteInfo = await _context.Users.FindAsync(id);
 
-        [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] RegisterDto dto)
-        {
-                var user = new Cliente { 
-                        Name = dto.Name, 
-                        UserName = dto.Email, 
-                        Email = dto.Email, 
-                        Birthday = dto.Birthday,
-                        Balance = 0
-                };
-                var result = await _userManager.CreateAsync(user, dto.Password);
+        return Ok(clienteInfo);
+    }
 
-                if (result.Succeeded)
-                {
-                        return Created();
-                }
-                return BadRequest(result.Errors);
-        }
 
-        [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginDto dto)
-        {
-                var user = await _userManager.FindByNameAsync(dto.email);
-
-                if (user==null || !await new ValidarSenha(_userManager).Validar(user, dto.password))
-                { 
-                       return Unauthorized();
-                }
-                 
-                var authClaims = new List<Claim>
-                {
-                        new Claim(JwtRegisteredClaimNames.Sub, user.Email!),
-                        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                };
-
-                var token = new JwtSecurityToken(
-                        issuer: _configuration["Jwt:Issuer"],
-                        expires: DateTime.Now.AddMinutes(double.Parse(_configuration["Jwt:ExpiryMinutes"]!)),
-                        claims: authClaims,
-                        signingCredentials: new SigningCredentials( new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!)), 
-                                SecurityAlgorithms.HmacSha256
-                        )
-                );
-                return Ok(new { Token = new JwtSecurityTokenHandler().WriteToken(token) });
-        }
 }

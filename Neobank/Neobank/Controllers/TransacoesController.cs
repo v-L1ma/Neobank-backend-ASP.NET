@@ -8,7 +8,7 @@ using Neobank.Services;
 
 namespace Neobank.Controllers;
 
-[Route("api/[Controller]")]
+[Route("[Controller]")]
 [ApiController]
 public class TransacoesController(AppDbContext context, UserManager<Cliente> userManager) : ControllerBase
 {
