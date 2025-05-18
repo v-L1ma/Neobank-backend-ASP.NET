@@ -35,6 +35,15 @@ public class TransacoesController(AppDbContext context, UserManager<Cliente> use
         {
             return BadRequest();
         }
+        
+        _context.Transacoes.Add(new Transacao
+        {
+            Data = DateTime.Now,
+            ReceiverId = dto.ReceiverId,
+            SenderId = dto.SenderId,
+            Tipo = "Tranferência",
+            Value = dto.Value
+        });
 
         sender.Balance -= dto.Value;
         receiver.Balance += dto.Value;
