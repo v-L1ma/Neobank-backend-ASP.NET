@@ -19,7 +19,15 @@ public class TransacoesController(AppDbContext context, UserManager<Cliente> use
     public async Task<IActionResult> Trasferir([FromBody] TransacaoDto dto)
     {
         var sender = await _context.Users.FindAsync(dto.SenderId);
-        var receiver = await _context.Users.FindAsync(dto.ReceiverId);
+        
+        var chave = await new FindService(_context).FindByChavePix(dto.ChavePix);
+
+        if (chave is null)
+        {
+            return BadRequest("Chave PIX inválida");
+        }
+        
+        var receiver = await _context.Users.FindAsync(chave.ClienteId);
 
         if (sender == null || receiver == null)
         {
@@ -31,7 +39,7 @@ public class TransacoesController(AppDbContext context, UserManager<Cliente> use
             return BadRequest("Senha inválida.");
         } 
 
-        if (dto.SenderId == dto.ReceiverId || dto.Value<=0 || sender.Balance < dto.Value)
+        if (dto.SenderId == chave.ClienteId || dto.Value<=0 || sender.Balance < dto.Value)
         {
             return BadRequest();
         }
@@ -42,7 +50,7 @@ public class TransacoesController(AppDbContext context, UserManager<Cliente> use
         _context.Transacoes.Add(new Transacao
         {
             Data = DateTime.Now,
-            ReceiverId = dto.ReceiverId,
+            ReceiverId = chave.ClienteId,
             SenderId = dto.SenderId,
             Tipo = "Tranferência",
             Value = dto.Value

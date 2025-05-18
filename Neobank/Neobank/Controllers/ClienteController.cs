@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Neobank.Data;
 using Neobank.Models;
+using Neobank.Services;
 
 namespace Neobank.Controllers;
 
@@ -14,7 +15,7 @@ public class ClienteController(AppDbContext context) : ControllerBase
     private readonly AppDbContext _context = context;
 
     [HttpGet("{id}")]
-    public async Task<ActionResult> GetClienteInfo([FromRoute] string id)
+    public async Task<ActionResult> GetClienteInfoById([FromRoute] string id)
     {
         if (id.IsNullOrEmpty())
         {
@@ -28,6 +29,32 @@ public class ClienteController(AppDbContext context) : ControllerBase
         }
         
         return Ok(clienteInfo);
+    }
+    
+    [HttpGet("chavePix/{chavePix}")]
+    public async Task<ActionResult> GetClienteInfoByPix([FromRoute] string chavePix)
+    {
+
+        var chave = await new FindService(_context).FindByChavePix(chavePix);
+
+        if (chave is null)
+        {
+            return NotFound("Chave Pix não encontrada");
+        }
+        
+        var clienteInfo = await _context.Users.FindAsync(chave.ClienteId);
+        
+        if (clienteInfo is null)
+        {
+            return NotFound("Nenhum Cliente encontrado.");
+        }
+
+        return Ok(new
+        {
+            clienteInfo.Id,
+            clienteInfo.Name,
+            clienteInfo.Email
+        });
     }
 
     [HttpGet("Transacoes/{id}")]
