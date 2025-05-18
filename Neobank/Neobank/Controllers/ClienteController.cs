@@ -1,7 +1,9 @@
 using System.Security.AccessControl;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Neobank.Data;
+using Neobank.Models;
 
 namespace Neobank.Controllers;
 
@@ -29,14 +31,23 @@ public class ClienteController(AppDbContext context) : ControllerBase
     }
 
     [HttpGet("Transacoes/{id}")]
-    public IActionResult GetClienteTransacoes([FromRoute] string id)
+    public async Task<IActionResult> GetClienteTransacoes([FromRoute] string id)
     {
         if (id.IsNullOrEmpty())
         {
             return BadRequest("Por favor forneça um Id.");
         }
 
-        return Ok("Falta implementar as transacoes");
+        List<Transacao> transacoes = await _context.Transacoes
+            .Where(transacao => transacao.SenderId == id)
+            .ToListAsync();
+
+        if (transacoes.IsNullOrEmpty())
+        {
+            return NotFound("Nenhuma transação encontrada.");
+        }
+
+        return Ok(new {transacoes = transacoes, msg = "Transaçoes encontradas."});
     }
 
 

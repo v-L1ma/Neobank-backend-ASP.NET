@@ -1,8 +1,11 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Neobank.Models;
 
 public class Transacao
 {
-    public string Id { get; set; } = string.Empty;
+    [Key]
+    public string Id { get; set; } = Guid.NewGuid().ToString(); 
     public string Tipo { get; set; } = string.Empty;
     public string SenderId { get; set; } = string.Empty;
     public string ReceiverId { get; set; } = string.Empty;

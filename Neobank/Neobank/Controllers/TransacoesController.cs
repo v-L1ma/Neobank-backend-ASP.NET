@@ -35,6 +35,9 @@ public class TransacoesController(AppDbContext context, UserManager<Cliente> use
         {
             return BadRequest();
         }
+
+        sender.Balance -= dto.Value;
+        receiver.Balance += dto.Value;
         
         _context.Transacoes.Add(new Transacao
         {
@@ -44,9 +47,7 @@ public class TransacoesController(AppDbContext context, UserManager<Cliente> use
             Tipo = "Tranferência",
             Value = dto.Value
         });
-
-        sender.Balance -= dto.Value;
-        receiver.Balance += dto.Value;
+        
         _context.SaveChanges();
 
         return Ok();
@@ -68,6 +69,16 @@ public class TransacoesController(AppDbContext context, UserManager<Cliente> use
         }
 
         cliente.Balance += dto.Value;
+        
+        _context.Transacoes.Add(new Transacao
+        {
+            Data = DateTime.Now,
+            ReceiverId = dto.ClienteId,
+            SenderId = dto.ClienteId,
+            Tipo = "Depósito",
+            Value = dto.Value
+        });
+        
         await _context.SaveChangesAsync();
 
         return Ok("Deposito concluído com êxito!");
@@ -81,7 +92,7 @@ public class TransacoesController(AppDbContext context, UserManager<Cliente> use
             return BadRequest();
         }
 
-        var cliente = await _context.Users.FindAsync(dto.CienteId);
+        var cliente = await _context.Users.FindAsync(dto.ClienteId);
 
         if (cliente is null)
         {
@@ -99,6 +110,16 @@ public class TransacoesController(AppDbContext context, UserManager<Cliente> use
         }
 
         cliente.Balance = dto.Value;
+        
+        _context.Transacoes.Add(new Transacao
+        {
+            Data = DateTime.Now,
+            ReceiverId = dto.ClienteId,
+            SenderId = dto.ClienteId,
+            Tipo = "Saque",
+            Value = dto.Value
+        });
+        
         await _context.SaveChangesAsync();
 
         return Ok("Transferencia concluida com êxito!");
@@ -178,9 +199,23 @@ public class TransacoesController(AppDbContext context, UserManager<Cliente> use
         if (!await new ValidarSenha(_userManager).Validar(cliente, dto.Password) )
         {
             return BadRequest("Senha inválida.");
-        } 
+        }
+
+        cliente.Balance -= infos.Value;
+        receiver.Balance += infos.Value;
         
-        return Ok(new { receiver = receiver, value = infos.Value});
+        _context.Transacoes.Add(new Transacao
+        {
+            Data = DateTime.Now,
+            ReceiverId = infos.ReceiverId,
+            SenderId = dto.ClientId,
+            Tipo = "Pagamento",
+            Value = infos.Value
+        });
+
+        await _context.SaveChangesAsync();
+        
+        return Ok("Pagamento feito com sucesso!");
     }
     
     
