@@ -14,12 +14,15 @@ public class AppDbContext
 
     public DbSet<Transacao> Transacoes { get; set; }
     
+    public DbSet<ChavePix> ChavesPix { get; set; }
+    
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
 
         builder.Entity<Cliente>().ToTable("Clientes");
         builder.Entity<Transacao>().ToTable("Transacoes");
+        builder.Entity<ChavePix>().ToTable("ChavesPix");
     }
 }
 
