@@ -1,6 +1,6 @@
 namespace Neobank.Models;
 
-public class WithdrawDto
+public class SaqueDto
 {
     public string ClienteId { get; set; } = string.Empty;
     public int Value { get; set; } = 0;

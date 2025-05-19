@@ -1,11 +1,12 @@
 using Microsoft.AspNetCore.Identity;
 using Neobank.Data;
+using Neobank.Interfaces;
 using Neobank.Models;
 using Neobank.Services;
 
 namespace Neobank.UseCases;
 
-public class TransferenciaUseCase
+public class TransferenciaUseCase : ITransferenciaUseCase
 {
 
     private readonly AppDbContext _context;
@@ -17,7 +18,7 @@ public class TransferenciaUseCase
         _userManager = userManager;
     }
 
-    public async Task Tranferir(TransacaoDto dto)
+    public async Task Transferir(TransacaoDto dto)
     {
         var sender = await _context.Users.FindAsync(dto.SenderId);
         
