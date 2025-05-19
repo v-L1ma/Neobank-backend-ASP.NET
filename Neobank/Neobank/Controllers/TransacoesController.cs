@@ -5,60 +5,43 @@ using Microsoft.IdentityModel.Tokens;
 using Neobank.Data;
 using Neobank.Models;
 using Neobank.Services;
+using Neobank.UseCases;
 
 namespace Neobank.Controllers;
 
 [Route("[Controller]")]
 [ApiController]
-public class TransacoesController(AppDbContext context, UserManager<Cliente> userManager) : ControllerBase
+public class TransacoesController : ControllerBase
 {
-    private readonly AppDbContext _context = context;
-    private readonly UserManager<Cliente> _userManager = userManager;
-
-    [HttpPost("Transferir")]
-    public async Task<IActionResult> Trasferir([FromBody] TransacaoDto dto)
+    private readonly AppDbContext _context;
+    private readonly UserManager<Cliente> _userManager;
+    private readonly TransferenciaUseCase _transferencia;
+    
+    public TransacoesController(
+        AppDbContext context, 
+        UserManager<Cliente> userManager,
+        TransferenciaUseCase transferencia
+            )
     {
-        var sender = await _context.Users.FindAsync(dto.SenderId);
-        
-        var chave = await new FindService(_context).FindByChavePix(dto.ChavePix);
+        _context = context;
+        _userManager = userManager;
+        _transferencia = transferencia;
+    }
+    
+    [HttpPost("Transferir")]
+    public async Task<IActionResult> Transferir([FromBody] TransacaoDto dto)
+    {
 
-        if (chave is null)
+        try
         {
-            return BadRequest("Chave PIX inválida");
+            await _transferencia.Tranferir(dto);
+            return Ok("Transferencia realizada com sucesso!");
         }
-        
-        var receiver = await _context.Users.FindAsync(chave.ClienteId);
-
-        if (sender == null || receiver == null)
+        catch (Exception e)
         {
-            return NotFound();
+            return BadRequest(e.Message);
         }
-        
-        if (!await new ValidarSenha(_userManager).Validar(sender, dto.Password) )
-        {
-            return BadRequest("Senha inválida.");
-        } 
-
-        if (dto.SenderId == chave.ClienteId || dto.Value<=0 || sender.Balance < dto.Value)
-        {
-            return BadRequest();
-        }
-
-        sender.Balance -= dto.Value;
-        receiver.Balance += dto.Value;
-        
-        _context.Transacoes.Add(new Transacao
-        {
-            Data = DateTime.Now,
-            ReceiverId = chave.ClienteId,
-            SenderId = dto.SenderId,
-            Tipo = "Tranferência",
-            Value = dto.Value
-        });
-        
-        _context.SaveChanges();
-
-        return Ok();
+       
     }
     
     [HttpPost("Depositar")]

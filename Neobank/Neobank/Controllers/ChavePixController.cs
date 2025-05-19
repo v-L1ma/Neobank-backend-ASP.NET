@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Neobank.Data;
-using Neobank.Migrations;
 using Neobank.Models;
 
 namespace Neobank.Controllers;

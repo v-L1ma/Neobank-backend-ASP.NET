@@ -6,8 +6,11 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Neobank.Data;
 using Neobank.Models;
+using Neobank.UseCases;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<TransferenciaUseCase>();
 
 builder.Services.AddDbContext<AppDbContext>(
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
