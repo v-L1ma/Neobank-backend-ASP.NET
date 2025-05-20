@@ -2,6 +2,7 @@ using System.Security.AccessControl;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Neobank.Application.Interfaces.Clientes;
 using Neobank.Data;
 using Neobank.Models;
 using Neobank.Services;
@@ -10,71 +11,67 @@ namespace Neobank.Controllers;
 
 [Route("[controller]")]
 [ApiController]
-public class ClienteController(AppDbContext context) : ControllerBase
+public class ClienteController : ControllerBase
 {
-    private readonly AppDbContext _context = context;
+    private readonly AppDbContext _context;
+    private readonly IGetInfoByIdUseCase _infoById;
+    private readonly IGetClientInfoByPixUseCase _infoByPix;
+    private readonly IGetClienteTransacoesUseCase _getClienteTransacoes;
+
+    public ClienteController(AppDbContext context, IGetInfoByIdUseCase infoById, IGetClientInfoByPixUseCase infoByPix, IGetClienteTransacoesUseCase getClienteTransacoes)
+    {
+        _context = context;
+        _infoById = infoById;
+        _infoByPix = infoByPix;
+        _getClienteTransacoes = getClienteTransacoes;
+    }
 
     [HttpGet("{id}")]
     public async Task<ActionResult> GetClienteInfoById([FromRoute] string id)
     {
-        if (id.IsNullOrEmpty())
+        try
         {
-            return BadRequest("Por favor forneça um Id.");
+            var clienteInfo = await _infoById.Get(id);
+            return Ok(clienteInfo);
         }
-        var clienteInfo = await _context.Users.FindAsync(id);
-
-        if (clienteInfo is null)
+        catch (Exception e)
         {
-            return NotFound("Usuario não encontrado.");
+            return BadRequest(e.Message);
         }
-        
-        return Ok(clienteInfo);
     }
     
     [HttpGet("chavePix/{chavePix}")]
     public async Task<ActionResult> GetClienteInfoByPix([FromRoute] string chavePix)
     {
-
-        var chave = await new FindService(_context).FindByChavePix(chavePix);
-
-        if (chave is null)
+        try
         {
-            return NotFound("Chave Pix não encontrada");
+            var clienteInfo = await _infoByPix.Get(chavePix);
+            return Ok(new
+            {
+                clienteInfo.Id,
+                clienteInfo.Name,
+                clienteInfo.Email
+            });
+
         }
-        
-        var clienteInfo = await _context.Users.FindAsync(chave.ClienteId);
-        
-        if (clienteInfo is null)
+        catch (Exception e)
         {
-            return NotFound("Nenhum Cliente encontrado.");
+            return BadRequest(e.Message);
         }
-
-        return Ok(new
-        {
-            clienteInfo.Id,
-            clienteInfo.Name,
-            clienteInfo.Email
-        });
     }
 
     [HttpGet("Transacoes/{id}")]
     public async Task<IActionResult> GetClienteTransacoes([FromRoute] string id)
     {
-        if (id.IsNullOrEmpty())
+        try
         {
-            return BadRequest("Por favor forneça um Id.");
+            var transacoes = await _getClienteTransacoes.Get(id);
+            return Ok(new {transacoes = transacoes, msg = "Transaçoes encontradas."});
         }
-
-        List<Transacao> transacoes = await _context.Transacoes
-            .Where(transacao => transacao.SenderId == id)
-            .ToListAsync();
-
-        if (transacoes.IsNullOrEmpty())
+        catch (Exception e)
         {
-            return NotFound("Nenhuma transação encontrada.");
+            return BadRequest(e.Message);
         }
-
-        return Ok(new {transacoes = transacoes, msg = "Transaçoes encontradas."});
     }
 
 

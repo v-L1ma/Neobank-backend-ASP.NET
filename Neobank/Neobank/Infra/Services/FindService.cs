@@ -1,14 +1,20 @@
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Neobank.Application.Interfaces.Services;
 using Neobank.Data;
 using Neobank.Models;
 
 namespace Neobank.Services;
 
-public class FindService(AppDbContext context)
+public class FindService : IFindService
 {
-    private readonly AppDbContext _context = context;
+    private readonly AppDbContext _context;
+
+    public FindService(AppDbContext context)
+    {
+        _context = context;
+    }
 
     public async Task<ChavePix?> FindByChavePix(string chavePix)
     {
