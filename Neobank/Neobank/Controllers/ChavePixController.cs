@@ -7,92 +7,41 @@ namespace Neobank.Controllers;
 
 [Route("[controller]")]
 [ApiController]
-public class ChavePixController(AppDbContext context) : ControllerBase
+public class ChavePixController : ControllerBase
 {
-    private readonly AppDbContext _context = context;
+    private readonly AppDbContext _context;
+    private readonly ICriarChavePixUseCase _criarChavePix;
+    private readonly IListarChavesUseCase _listarChaves;
+
+    public ChavePixController(AppDbContext context, ICriarChavePixUseCase criarChavePix , IListarChavesUseCase listarChaves){
+        _context = context;
+        _criarChavePix = criarChavePix;
+        _listarChaves = listarChaves;
+    }
 
     [HttpPost]
     public async Task<IActionResult> CriarChave([FromBody] CriarChavePixDto dto)
     {
-        if (dto.ClienteId.IsNullOrEmpty() || dto.Chave.IsNullOrEmpty() || dto.Tipo.IsNullOrEmpty())
-        {
-            return BadRequest("Todos os campos são obrigatórios.");
-        }
-
-        var cliente = await _context.Users.FindAsync(dto.ClienteId);
-
-        if (cliente is null)
-        {
-            return NotFound("Conta não encontrada.");
-        }
-
-        if (_context.ChavesPix.Any(chave => chave.ClienteId == cliente.Id && chave.Tipo == dto.Tipo ) )
-        {
-            return BadRequest($"Já existe uma chave do tipo {dto.Tipo}.");
-        }
-
-        ChavePix novaChave;
-
-        switch (dto.Tipo)
-        {
-            case "Celular":
-                novaChave = new ChavePix
-                {
-                    ClienteId = dto.ClienteId,
-                    Tipo = "Celular",
-                    Chave = dto.Chave
-                };
-                break;
-            case "CPF":
-                novaChave = new ChavePix
-                {
-                    ClienteId = dto.ClienteId,
-                    Tipo = "CPF",
-                    Chave = dto.Chave
-                };
-                break;
-            case "Email":
-                novaChave = new ChavePix
-                {
-                    ClienteId = dto.ClienteId,
-                    Tipo = "Email",
-                    Chave = dto.Chave
-                };
-                break;
-            case "Aleatória":
-                novaChave = new ChavePix
-                {
-                    ClienteId = dto.ClienteId,
-                    Tipo = "Aleatória",
-                    Chave = Guid.NewGuid().ToString()
-                };
-                break;
-            default:
-                return BadRequest("Por favor insira um tipo de chave PIX válido.");
-        }
-
-        _context.ChavesPix.Add(novaChave);
-        await _context.SaveChangesAsync();
-        
+        try{
+        var novaChave = await _criarChavePix.criar(dto);        
         return Ok(new{ chavePix = novaChave, msg = "Chave cadastrada com sucesso"});
+        } catch (Exception e)
+        {
+            return BadRequest(e.message);
+        }
+    
     }
 
     [HttpGet("{id}")]
     public IActionResult ListarChaves([FromRoute] string id)
     {
-        if (id.IsNullOrEmpty())
-        {
-            return BadRequest("Por favor, forneça um Id.");
-        }
-
-        List<ChavePix> chaves = _context.ChavesPix.Where(chave => chave.ClienteId == id).ToList();
-
-        if (chaves.IsNullOrEmpty())
-        {
-            return NotFound("Nenhuma chave PIX encontrada.");
-        }
-        
+        try{
+        var novaChave = await _listarChaves.Listar(dto);        
         return Ok(new { chavesPIX = chaves, msg = "Essas são as chaves cadastradas."});
+        } catch (Exception e)
+        {
+            return BadRequest(e.message);
+        }
     }
 
     [HttpPatch]
