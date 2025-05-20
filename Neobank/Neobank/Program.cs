@@ -4,9 +4,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Neobank.Application.Interfaces.Auth;
 using Neobank.Application.Interfaces.ChavePix;
 using Neobank.Application.Interfaces.Clientes;
 using Neobank.Application.Interfaces.Services;
+using Neobank.Application.UseCases.Auth;
 using Neobank.Application.UseCases.Clientes;
 using Neobank.Data;
 using Neobank.Interfaces;
@@ -29,6 +31,8 @@ builder.Services.AddScoped<ICriarChavePixUseCase, CriarChavePixUseCase>();
 builder.Services.AddScoped<IListarChavesUseCase, ListarChavesUseCase>();
 builder.Services.AddScoped<IEditarChavePixUseCase, EditarChavePixUseCase>();
 builder.Services.AddScoped<IExcluirChavePixUseCase, ExcluirChavePixUseCase>();
+builder.Services.AddScoped<ILoginUseCase, LoginUseCase>();
+builder.Services.AddScoped<IRegisterUseCase, RegisterUseCase>();
 
 builder.Services.AddDbContext<AppDbContext>(
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
