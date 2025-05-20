@@ -1,3 +1,7 @@
+using Neobank.Application.Interfaces.ChavePix;
+using Neobank.Data;
+using Neobank.Models;
+
 namespace Neobank.UseCases;
 
 public class CriarChavePixUseCase : ICriarChavePixUseCase
@@ -9,9 +13,9 @@ public class CriarChavePixUseCase : ICriarChavePixUseCase
     _context = context;
   }
 
-  public async Task Criar(CriarChavePixDto dto){      
+  public async Task<ChavePix> Criar(CriarChavePixDto dto){      
 
-      if (dto.ClienteId.IsNullOrEmpty() || dto.Chave.IsNullOrEmpty() || dto.Tipo.IsNullOrEmpty())
+      if (string.IsNullOrEmpty(dto.ClienteId) || string.IsNullOrEmpty(dto.Chave) || string.IsNullOrEmpty(dto.Tipo))
           {
               throw new Exception("Todos os campos são obrigatórios.");
           }
