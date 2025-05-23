@@ -46,8 +46,10 @@ public class AuthController : ControllerBase
         {
                 try
                 {
-                        var token = await _login.Login(dto);
-                        return Ok(new { Token = new JwtSecurityTokenHandler().WriteToken(token) });
+                        var result = await _login.Login(dto);
+                        var user = result.Cliente;
+                        var token = result.Token;
+                        return Ok(new { Token = new JwtSecurityTokenHandler().WriteToken(token), User = user });
                 }
                 catch (Exception e)
                 {

@@ -5,5 +5,5 @@ namespace Neobank.Application.Interfaces.Auth;
 
 public interface ILoginUseCase
 {
-    Task<JwtSecurityToken> Login(LoginDto dto);
+    Task<LoginResponseDto> Login(LoginDto dto);
 }

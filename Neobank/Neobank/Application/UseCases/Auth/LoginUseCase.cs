@@ -15,13 +15,15 @@ public class LoginUseCase : ILoginUseCase
     private readonly UserManager<Cliente> _userManager;
     private readonly IConfiguration _configuration;
 
-    public LoginUseCase(UserManager<Cliente> userManager, IConfiguration configuration)
+    public LoginUseCase(
+        UserManager<Cliente> userManager, 
+        IConfiguration configuration)
     {
         _userManager = userManager;
         _configuration = configuration;
     }
     
-    public async Task<JwtSecurityToken> Login(LoginDto dto)
+    public async Task<LoginResponseDto> Login(LoginDto dto)
     {
         var user = await _userManager.FindByNameAsync(dto.email);
 
@@ -45,6 +47,6 @@ public class LoginUseCase : ILoginUseCase
             )
         );
         
-        return token;
+        return new LoginResponseDto{ Cliente = user, Token = token};
     }
 }
