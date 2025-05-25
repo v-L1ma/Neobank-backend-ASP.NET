@@ -60,7 +60,7 @@ public class ClienteController : ControllerBase
         }
     }
 
-    [HttpGet("Transacoes/{id}")]
+    [HttpGet("transacoes/{id}")]
     public async Task<IActionResult> GetClienteTransacoes([FromRoute] string id)
     {
         try
