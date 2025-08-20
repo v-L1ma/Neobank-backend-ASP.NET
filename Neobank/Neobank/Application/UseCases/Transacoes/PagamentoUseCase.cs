@@ -18,7 +18,7 @@ public class PagamentoUseCase : IPagamentoUseCase
         _userManager = userManager;
     }
 
-    public async Task Pagar(PagarDto dto)
+    public async Task<TransferenciaResponseDto> Pagar(PagarDto dto)
     {
         string descriptografado = Cryptografia.Descryptografar(dto.CodigoBarras);
 
@@ -63,12 +63,15 @@ public class PagamentoUseCase : IPagamentoUseCase
         {
             Data = DateTime.Now,
             ReceiverId = infos.ReceiverId,
+            ReceiverName = receiver.Name,
             SenderId = dto.ClientId,
+            SenderName = cliente.Name,
             Tipo = "Pagamento",
             Value = infos.Value
         });
 
         await _context.SaveChangesAsync();
-
+        
+        return new TransferenciaResponseDto("Pagamento feito com sucesso!");
     }
 }

@@ -4,5 +4,5 @@ namespace Neobank.Interfaces;
 
 public interface IPagamentoUseCase
 {
-    Task Pagar(PagarDto dto);
+    Task<TransferenciaResponseDto> Pagar(PagarDto dto);
 }

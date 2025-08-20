@@ -14,7 +14,7 @@ public class DepositoUseCase : IDepositoUseCase
         _context = context;
     }
     
-    public async Task Depositar(DepositDto dto)
+    public async Task<TransferenciaResponseDto> Depositar(DepositDto dto)
     {
         if (dto.Value<=0)
         {
@@ -34,11 +34,14 @@ public class DepositoUseCase : IDepositoUseCase
         {
             Data = DateTime.Now,
             ReceiverId = dto.ClienteId,
+            ReceiverName = cliente.Name,
             SenderId = dto.ClienteId,
+            SenderName = cliente.Name,
             Tipo = "Depósito",
             Value = dto.Value
         });
         
         await _context.SaveChangesAsync();
+        return new TransferenciaResponseDto("Deposito concluído com êxito!");
     }
 }

@@ -17,6 +17,11 @@ public class RegisterUseCase : IRegisterUseCase
     
     public async Task<Cliente> Register(RegisterDto dto)
     {
+        if (dto.Password.Length < 6)
+        {
+            throw new Exception("A senha deve ter no minimo 6 digitos");
+        }
+        
         var user = new Cliente { 
             Name = dto.Name, 
             UserName = dto.Email, 

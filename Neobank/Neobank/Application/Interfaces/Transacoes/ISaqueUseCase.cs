@@ -4,5 +4,5 @@ namespace Neobank.Interfaces;
 
 public interface ISaqueUseCase
 {
-    Task Sacar(SaqueDto dto);
+    Task<TransferenciaResponseDto> Sacar(SaqueDto dto);
 }

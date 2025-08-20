@@ -4,5 +4,5 @@ namespace Neobank.Interfaces;
 
 public interface ITransferenciaUseCase
 {
-    Task Transferir(TransacaoDto dto);
+    Task<TransferenciaResponseDto> Transferir(TransacaoDto dto);
 }

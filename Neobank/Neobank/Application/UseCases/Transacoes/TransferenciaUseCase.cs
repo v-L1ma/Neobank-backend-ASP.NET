@@ -18,7 +18,7 @@ public class TransferenciaUseCase : ITransferenciaUseCase
         _userManager = userManager;
     }
 
-    public async Task Transferir(TransacaoDto dto)
+    public async Task<TransferenciaResponseDto> Transferir(TransacaoDto dto)
     {
         var sender = await _context.Users.FindAsync(dto.SenderId);
         
@@ -63,12 +63,16 @@ public class TransferenciaUseCase : ITransferenciaUseCase
         {
             Data = DateTime.Now,
             ReceiverId = chave.ClienteId,
+            ReceiverName = receiver.Name,
             SenderId = dto.SenderId,
+            SenderName = sender.Name,
             Tipo = "Tranferência",
             Value = dto.Value
         });
         
         await _context.SaveChangesAsync();
+
+        return new TransferenciaResponseDto("Transferencia realizada com sucesso!");
     }
     
 }

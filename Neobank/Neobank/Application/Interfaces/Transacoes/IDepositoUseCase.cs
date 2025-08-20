@@ -4,5 +4,5 @@ namespace Neobank.Interfaces;
 
 public interface IDepositoUseCase
 {
-    Task Depositar(DepositDto dto);
+    Task<TransferenciaResponseDto> Depositar(DepositDto dto);
 }

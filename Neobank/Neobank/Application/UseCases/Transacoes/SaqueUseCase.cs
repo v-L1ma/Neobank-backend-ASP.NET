@@ -17,7 +17,7 @@ public class SaqueUseCase : ISaqueUseCase
         _userManager = userManager;
     }
 
-    public async Task Sacar(SaqueDto dto)
+    public async Task<TransferenciaResponseDto> Sacar(SaqueDto dto)
     {
         if (dto.Value<=0)
         {
@@ -47,11 +47,14 @@ public class SaqueUseCase : ISaqueUseCase
         {
             Data = DateTime.Now,
             ReceiverId = dto.ClienteId,
+            ReceiverName = cliente.Name,
             SenderId = dto.ClienteId,
+            SenderName = cliente.Name,
             Tipo = "Saque",
             Value = dto.Value
         });
         
         await _context.SaveChangesAsync();
+        return new TransferenciaResponseDto("Transferencia concluida com êxito!");
     }
 }
